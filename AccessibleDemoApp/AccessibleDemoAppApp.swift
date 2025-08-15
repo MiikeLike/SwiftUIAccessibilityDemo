@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+// MARK: - Main App
 @main
 struct AccessibleDemoAppApp: App {
+    // MARK: - Body
     var body: some Scene {
         WindowGroup {
             ContentView()

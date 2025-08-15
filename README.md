@@ -29,12 +29,26 @@ The app demonstrates how to create inclusive, scalable, and user-friendly interf
 
 ```
 .
-├── Accessibility     # Helpers and A11y configurations
-├── Models            # Data structures
-├── Resources         # Assets, colors, localization files
-├── Utilities         # Reusable helper functions
-├── ViewModels        # UI logic and state management
-└── Views             # SwiftUI screens and components
+├── Accessibility           # Helpers and A11y configurations
+│   ├── A11yHelpers
+│   └── A11yChecklistView
+├── Features                # App feature modules
+│   ├── Detail
+│   │   └── DetailView
+│   ├── Form
+│   │   └── FeedbackFormView
+│   ├── Home
+│   │   ├── HomeListView
+│   │   └── ItemRowView
+│   └── Settings
+│       └── SettingsView
+├── Models                  # Data structures
+│   └── Item
+├── Utilities               # Reusable helper functions
+│   ├── HapticStyle
+│   └── AccessibleDemoAppApp
+├── Assets                  # Asset catalog
+└── ContentView              # Main app entry screen
 ```
 
 </details>

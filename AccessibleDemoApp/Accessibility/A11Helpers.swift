@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - View Extensions
 extension View {
     /// Atributos comunes de accesibilidad para botones + área táctil mínima
     func A11yButton(label: String, hint: String? = nil) -> some View {
@@ -19,6 +20,7 @@ extension View {
     }
 }
 
+// MARK: - Animation Helpers
 /// Respeta Reduce Motion en animaciones
 @inline(__always)
 func withSafeAnimation(_ reduce: Bool, _ changes: @escaping () -> Void) {

@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
+    // MARK: - Properties
+    private enum A11yFocus: Hashable { case header }
+    @AccessibilityFocusState private var a11yFocus: A11yFocus?
+    
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             List {
@@ -22,10 +28,27 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Accessible Demo")
+            .onAppear {
+                if UIAccessibility.isVoiceOverRunning {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        a11yFocus = .header
+                        UIAccessibility.post(notification: .announcement, argument: "Accessible Demo. Menú principal.")
+                    }
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIAccessibility.voiceOverStatusDidChangeNotification)) { _ in
+                if UIAccessibility.isVoiceOverRunning {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        a11yFocus = .header
+                        UIAccessibility.post(notification: .announcement, argument: "Accessible Demo. Menú principal.")
+                    }
+                }
+            }
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     ContentView()
 }

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ItemRowView: View {
+    // MARK: - Properties
     let item: Item
+    var onDelete: () -> Void = {}
 
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: item.done ? "checkmark.circle.fill" : "circle")
@@ -20,10 +23,11 @@ struct ItemRowView: View {
             }
             Spacer()
             Button {
-                // Second Action
+                onDelete()
             } label: {
                 Image(systemName: "trash").padding(10)
             }
+            .buttonStyle(.plain)
             .accessibilityLabel(Text("Eliminar \(item.title)"))
             .accessibilityHint(Text("Quita el elemento de la lista"))
         }
@@ -31,10 +35,10 @@ struct ItemRowView: View {
         .contentShape(Rectangle())
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("\(item.title). \(item.done ? "Completado" : "Pendiente"). \(item.subtitle)"))
-        .accessibilityAddTraits(.isButton)
     }
 }
 
+// MARK: - Preview
 #Preview("Default - Pending") {
     ItemRowView(item: .previewPending)
         .padding()

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct A11yChecklistView: View {
+    // MARK: - Properties
     private let items: [(title: String, detail: String)] = [
         ("VoiceOver", "Labels, Hints, Traits y orden lógico de foco"),
         ("Dynamic Type", "Estilos preferidos y layouts adaptables"),
@@ -17,6 +18,7 @@ struct A11yChecklistView: View {
         ("Reduce Motion", "Respeta preferencias del usuario")
     ]
 
+    // MARK: - Body
     var body: some View {
         List {
             ForEach(items.indices, id: \.self) { index in
@@ -39,6 +41,7 @@ struct A11yChecklistView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     A11yChecklistView()
 }
