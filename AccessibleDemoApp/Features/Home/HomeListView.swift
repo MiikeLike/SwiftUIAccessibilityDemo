@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomeListView: View {
+    // MARK: - Properties
     @State private var items: [Item] = demoItems
-
     @State private var selectedItem: Item? = nil
 
+    // MARK: - Private Methods
     private func deleteItem(_ item: Item) {
         if let idx = items.firstIndex(where: { $0.id == item.id }) {
             items.remove(at: idx)
@@ -19,6 +20,7 @@ struct HomeListView: View {
         }
     }
 
+    // MARK: - Body
     var body: some View {
         List {
             Section("Tareas") {
@@ -50,6 +52,7 @@ struct HomeListView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     HomeListView()
 }

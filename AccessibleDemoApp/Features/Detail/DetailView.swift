@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct DetailView: View {
+    // MARK: - Properties
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var scale: CGFloat = 1.0
     var item: Item? = nil
 
+    // MARK: - Body
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                // MARK: - Zoomable Image
                 Image(systemName: "globe")
                     .resizable()
                     .scaledToFit()
@@ -26,6 +29,7 @@ struct DetailView: View {
                     })
                     .accessibilityLabel(Text("Imagen ilustrativa"))
 
+                // MARK: - Content
                 if let item {
                     Text(item.title).font(.title)
                     Text(item.subtitle).font(.body).foregroundStyle(.secondary)
@@ -35,6 +39,7 @@ struct DetailView: View {
                         .font(.body)
                 }
 
+                // MARK: - Zoom Controls
                 HStack(spacing: 24) {
                     Button("−") { withSafeAnimation(reduceMotion) { scale = max(1.0, scale - 0.2) }
                         HapticManager.impact(.light)
@@ -55,6 +60,7 @@ struct DetailView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     DetailView()
 }

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ItemRowView: View {
+    // MARK: - Properties
     let item: Item
     var onDelete: () -> Void = {}
 
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: item.done ? "checkmark.circle.fill" : "circle")
@@ -36,6 +38,7 @@ struct ItemRowView: View {
     }
 }
 
+// MARK: - Preview
 #Preview("Default - Pending") {
     ItemRowView(item: .previewPending)
         .padding()

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Item Model
 struct Item: Identifiable, Hashable {
     let id = UUID()
     var title: String
@@ -15,6 +16,7 @@ struct Item: Identifiable, Hashable {
     var done: Bool
 }
 
+// MARK: - Demo Data
 let demoItems: [Item] = [
     .init(title: "Comprar leche", subtitle: "Supermercado", done: false),
     .init(title: "Enviar informe", subtitle: "Proyecto A", done: true),
