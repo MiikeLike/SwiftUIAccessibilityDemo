@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemRowView: View {
     let item: Item
+    var onDelete: () -> Void = {}
 
     var body: some View {
         HStack(spacing: 12) {
@@ -20,10 +21,11 @@ struct ItemRowView: View {
             }
             Spacer()
             Button {
-                // Second Action
+                onDelete()
             } label: {
                 Image(systemName: "trash").padding(10)
             }
+            .buttonStyle(.plain)
             .accessibilityLabel(Text("Eliminar \(item.title)"))
             .accessibilityHint(Text("Quita el elemento de la lista"))
         }
@@ -31,7 +33,6 @@ struct ItemRowView: View {
         .contentShape(Rectangle())
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("\(item.title). \(item.done ? "Completado" : "Pendiente"). \(item.subtitle)"))
-        .accessibilityAddTraits(.isButton)
     }
 }
 
