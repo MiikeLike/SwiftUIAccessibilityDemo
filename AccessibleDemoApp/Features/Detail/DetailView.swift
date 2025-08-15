@@ -36,10 +36,14 @@ struct DetailView: View {
                 }
 
                 HStack(spacing: 24) {
-                    Button("−") { withSafeAnimation(reduceMotion) { scale = max(1.0, scale - 0.2) } }
+                    Button("−") { withSafeAnimation(reduceMotion) { scale = max(1.0, scale - 0.2) }
+                        HapticManager.impact(.light)
+                    }
                         .frame(minWidth: 44, minHeight: 44)
                         .A11yButton(label: "Reducir zoom")
-                    Button("+") { withSafeAnimation(reduceMotion) { scale = min(3.0, scale + 0.2) } }
+                    Button("+") { withSafeAnimation(reduceMotion) { scale = min(3.0, scale + 0.2) }
+                        HapticManager.impact(.light)
+                    }
                         .frame(minWidth: 44, minHeight: 44)
                         .A11yButton(label: "Aumentar zoom")
                 }

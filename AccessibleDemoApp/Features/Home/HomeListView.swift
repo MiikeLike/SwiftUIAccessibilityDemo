@@ -29,7 +29,9 @@ struct HomeListView: View {
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 NavigationLink("Ajustes") { SettingsView() }
+                    .simultaneousGesture(TapGesture().onEnded{ HapticManager.impact(.medium)})
                 NavigationLink("Auditoría") { A11yChecklistView() }
+                    .simultaneousGesture(TapGesture().onEnded{ HapticManager.impact(.medium)})
             }
         }
     }
